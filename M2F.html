@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
+<title>Meters to Feet Length Converter</title>
 <body>
 
-<h1>Meters to Feet Converter</h1>
-<p>Enter Meters</p>
-<a href = "index.html"> Back to Home </a>
+<h2>Length Converter</h2>
+<p>Type a value in the Meters field to convert the value to Feet:</p>
 
+<p>
+  <label>Meters</label>
+  <input id="inputMeters" type="number" placeholder="Meters" oninput="LengthConverter(this.value)" onchange="LengthConverter(this.value)">
+</p>
+<p>Feet: <span id="outputFeet"></span></p>
 
-
+<script>
+function LengthConverter(valNum) {
+  document.getElementById("outputFeet").innerHTML=valNum*3.2808;
+}
+</script>
 </body>
 </html>
-
-
