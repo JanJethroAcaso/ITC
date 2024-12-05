@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sora' rel='stylesheet'>
+      <style>
+        body {background-color:#D4D8DD;}
+        title {color: #1A2D42; font-family: Sora; text-align:center;}
+        h2 {color: #1A2D42; font-family:Outfit; text-align:center;}
+        p {color: #2E4156; font-family:Outfit; text-align:center;}
+      </style>
 <title>Feet to Meters Length Converter</title>
 <body>
 
@@ -11,6 +19,7 @@
   <input id="inputFeet" type="number" placeholder="Feet" oninput="LengthConverter(this.value)" onchange="LengthConverter(this.value)">
 </p>
 <p>Meters: <span id="outputMeters"></span></p>
+<p><a href = "index.html">Back to Home</a></p>
 
 <script>
 function LengthConverter(valNum) {
