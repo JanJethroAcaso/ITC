@@ -14,10 +14,10 @@
       <label for="daysWorked">Days Worked:</label>
       <input type="number" id="daysWorked" min="0">
       <br>
-      <label for=dailyRate>Daily Rate</label>
+      <label for=dailyRate>Daily Rate:</label>
       <input type="text" id="dailyRate" min=0>
       <br>
-      <label for=deduction>Deduction</label>
+      <label for=deduction>Deduction Amount:</label>
       <input type="number" id="deduction" min="0">
       <br>
       <button onclick="addPayroll()">Add Payroll</button>
@@ -42,7 +42,7 @@
     </div>
 
     <script> 
-      let payrollList = []
+      let payrollList = [];
 
       function addPayroll ()
         {
@@ -80,6 +80,9 @@
 
       function updateTable ()
         {
+          const tableBody = document.querySelector("#payrollTable tbody");
+          tableBody.innerHTML = "";
+          
           payrollList.forEach((entry, index) => 
             {
               const row = document.createElement("tr");
@@ -96,7 +99,7 @@
             });
         }
 
-      function deletePayroll ()
+      function deleteEmployee ()
         {
           const lineNumber = parseInt(prompt("Enter the line number to delete:")) - 1;
           if (lineNumber >= 0 && lineNumber < patrollList.length)
