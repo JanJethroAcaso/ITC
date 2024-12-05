@@ -1,121 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Sora' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
-    <style>
+      <style>
         body {background-color:#D4D8DD;}
         h1 {color: #1A2D42; font-family: Sora; text-align:center;}
-        label {color: #2E4156; font-family:Sora; text-align:center;}
-        input {color: #2E4156; font-family:Sora; text-align:center; margin: 5px;}
-        button {color: #2E4156; font-family:Sora; text-align:center; margin: 10px;}
+        label {color: #2E4156; font-family:Outfit; text-align:center;}
+        input {color: #2E4156; font-family:Outfit; text-align:center;}
+        button {color: #2E4156; font-family:Outfit; text-align:center;}
         p {color: #2E4156; font-family:Outfit; text-align:center;}
         .container {text-align:center;}
-        table {margin: 20px auto; border-collapse: collapse; width: 80%;}
-        th, td {border: 1px solid #2E4156; padding: 10px; text-align: center; color: #1A2D42; font-family: Outfit;}
-        th {background-color: #1A2D42; color: white; font-family: Outfit;}
-    </style>
-    <title>Simple Payroll System</title>
+      </style>
+  <title>Factorial Calculator</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Simple Payroll System</h1>
-        <label for="employeeName">Employee Name:</label>
-        <input type="text" id="employeeName">
-        <br>
-        <label for="daysWorked">Days Worked:</label>
-        <input type="number" id="daysWorked" min="0">
-        <br>
-        <label for="dailyRate">Daily Rate:</label>
-        <input type="number" id="dailyRate" min="0">
-        <br>
-        <label for="deduction">Deduction Amount:</label>
-        <input type="number" id="deduction" min="0">
-        <br>
-        <button onclick="addPayroll()">Add Payroll</button>
-        <button onclick="deleteEmployee()">Delete Employee</button>
-        
-        <table id="payrollTable">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Employee Name</th>
-                    <th>Days Worked</th>
-                    <th>Daily Rate</th>
-                    <th>Gross Pay</th>
-                    <th>Deduction Amount</th>
-                    <th>Net Pay</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Payroll entries will be added here -->
-            </tbody>
-        </table>
-    </div>
+  <div class="container">
+  <h1>Factorial Calculator</h1>
+  <label for="number">Enter a number:</label>
+  <input type="number" id="number" min="0">
+  <button onclick="calculateFactorial()">Calculate</button>
+  <p id="result"></p>
+  <p><a href="index.html";>Back to Home</a></p>
 
-    <script>
-        let payrollList = [];
+  <script>
+    function calculateFactorial() {
+      let number = parseInt(document.getElementById("number").value);
+      let factorial = 1;
+      let i = 1;
 
-        function addPayroll() {
-            const employeeName = document.getElementById("employeeName").value;
-            const daysWorked = parseInt(document.getElementById("daysWorked").value);
-            const dailyRate = parseFloat(document.getElementById("dailyRate").value);
-            const deduction = parseFloat(document.getElementById("deduction").value);
+      while (i <= number) {
+        factorial *= i;
+        i++;
+      }
 
-            const grossPay = daysWorked * dailyRate;
-            const netPay = grossPay - deduction;
-
-            const payrollEntry = {
-                employeeName,
-                daysWorked,
-                dailyRate,
-                grossPay,
-                deduction,
-                netPay
-            };
-
-            payrollList.push(payrollEntry);
-            updateTable();
-
-            // Clear input fields after adding payroll
-            clearInputs();
-        }
-
-        function clearInputs() {
-            document.getElementById("employeeName").value = "";
-            document.getElementById("daysWorked").value = "";
-            document.getElementById("dailyRate").value = "";
-            document.getElementById("deduction").value = "";
-        }
-
-        function updateTable() {
-            const tableBody = document.querySelector("#payrollTable tbody");
-            tableBody.innerHTML = ""; // Clear existing entries
-
-            payrollList.forEach((entry, index) => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${entry.employeeName}</td>
-                    <td>${entry.daysWorked}</td>
-                    <td>${entry.dailyRate.toFixed(2)}</td>
-                    <td>${entry.grossPay.toFixed(2)}</td>
-                    <td>${entry.deduction.toFixed(2)}</td>
-                    <td>${entry.netPay.toFixed(2)}</td>
-                `;
-                tableBody.appendChild(row);
-            });
-        }
-
-        function deleteEmployee() {
-            const lineNumber = parseInt(prompt("Enter the line number to delete:")) - 1;
-            if (lineNumber >= 0 && lineNumber < payrollList.length) {
-                payrollList.splice(lineNumber, 1);
-                updateTable();
-            } else {
-                alert("Invalid line number. Please try again.");
-            }
-        }
-    </script>
+      document.getElementById("result").textContent = `The factorial of ${number} is ${factorial}`;
+    }
+  </script>
 </body>
 </html>
