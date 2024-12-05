@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sora' rel='stylesheet'>
+      <style>
+        body {background-color:#D4D8DD;}
+        title {color: #1A2D42; font-family: Sora; text-align:center;}
+        h2 {color: #1A2D42; font-family:Outfit; text-align:center;}
+        p {color: #2E4156; font-family:Outfit; text-align:center;}
+      </style>
 <title>Fahrenheit to Celcius Temperature Converter</title>
 <body>
 
@@ -11,6 +19,7 @@
   <input id="inputFahrenheit" type="number" placeholder="Fahrenheit" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)">
 </p>
 <p>Celcius: <span id="outputCelcius"></span></p>
+<p><a href = "index.html">Back to Home</a> </p> 
 
 <script>
 function temperatureConverter(valNum) {
