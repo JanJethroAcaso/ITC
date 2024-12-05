@@ -22,12 +22,23 @@
     <button onclick="calculateAverage()">Calculate</button>
     <p id="result"></p>
     <p><a href= "index.html";>Back to Home</a></p>
-    
-    
+  </div>
 
+   <script>
+      function calculateAverage() 
+      {
+           let number = parseInt(document.getElementById("number").value);
+           let sum = 0;
 
+           for (let i = 1; i <= number; i++) 
+           {
+               sum += i;
+           }
 
-
-
+           let average = number > 0 ? sum / number : 0;
+           document.getElementById("result").innerText = "The average is: " + average;
+       }
+   </script>
+   
 </body>
 </html>
